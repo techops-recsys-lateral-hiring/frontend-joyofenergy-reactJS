@@ -1,4 +1,5 @@
 import * as chartJs from "chart.js";
+import { groupByDay, sortByTime } from "./reading";
 
 let chart;
 
@@ -69,4 +70,8 @@ export const renderChart = (readings) => {
       maintainAspectRatio: false,
     },
   });
+};
+
+export default (readings) => {
+  renderChart(sortByTime(groupByDay(readings)).slice(-30));
 };

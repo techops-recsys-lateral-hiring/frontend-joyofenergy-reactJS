@@ -7,84 +7,12 @@
     <meta name="description" content="JOI Energy" />
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="basscss.css" />
-    <script src="index.js" type="module"></script>
+    <script src="index.js" type="module">
+      <!-- index.jsx is loaded by snowpack -->
+    </script>
     <title>JOI Energy</title>
   </head>
   <body>
-    <div class="background shadow-2 flex overflow-hidden">
-      <aside class="p3 menuWidth overflow-auto">
-        <p class="h2 greyBlue">⚡️ 1.4kW</p>
-        <p class="darkgray mb2">Power draw</p>
-        <p class="h2 greyBlue">☀️️ 5.8kW</p>
-        <p class="darkgray mb2">Solar power production</p>
-        <p class="h2 greyBlue">🔌️ 4.4kW</p>
-        <p class="darkgray mb2">Fed into grid</p>
-        <section class="h5 darkgray mb2">
-          <h4 class="h4 mb1">Your devices:</h4>
-          <div class="shadow-2 roundedMore bg-super-light-grey mb1">
-            <p class="darkgray pl2 pt1 pb1">Air conditioner</p>
-            <p class="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-              0.3093kW
-            </p>
-          </div>
-          <div class="shadow-2 roundedMore bg-super-light-grey mb1">
-            <p class="darkgray pl2 pt1 pb1">Wi-Fi router</p>
-            <p class="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-              0.0033kW
-            </p>
-          </div>
-          <div class="shadow-2 roundedMore bg-super-light-grey mb1">
-            <p class="darkgray pl2 pt1 pb1">Humidifer</p>
-            <p class="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-              0.0518kW
-            </p>
-          </div>
-          <div class="shadow-2 roundedMore bg-super-light-grey mb1">
-            <p class="darkgray pl2 pt1 pb1">Smart TV</p>
-            <p class="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-              0.1276kW
-            </p>
-          </div>
-          <div class="shadow-2 roundedMore bg-super-light-grey mb1">
-            <p class="darkgray pl2 pt1 pb1">Diffuser</p>
-            <p class="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-              0.0078kW
-            </p>
-          </div>
-          <div class="shadow-2 roundedMore bg-super-light-grey mb1">
-            <p class="darkgray pl2 pt1 pb1">Refrigerator</p>
-            <p class="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-              0.0923kW
-            </p>
-          </div>
-        </section>
-      </aside>
-      <article class="bg-very-light-grey p3 flex-auto overflow-auto">
-        <h1 class="regular darkgray line-height-1 mb3">Energy consumption</h1>
-        <section class="mb3">
-          <button
-            class="
-              h5
-              inline-block
-              shadow-2
-              pl2
-              pr2
-              pt1
-              pb1
-              roundedMore
-              border-grey
-              bg-blue
-              white
-              bold
-            "
-          >
-            Last 30 days
-          </button>
-        </section>
-        <section class="chartHeight mb3">
-          <canvas id="usageChart"></canvas>
-        </section>
-      </article>
-    </div>
+    <div id="root"></div>
   </body>
 </html>

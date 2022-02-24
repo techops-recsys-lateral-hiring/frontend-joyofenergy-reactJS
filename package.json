@@ -6,7 +6,7 @@
     "test": "jest",
     "test-watch": "jest --watchAll",
     "start": "snowpack dev",
-    "format": "prettier -w ./*.js"
+    "format": "prettier -w ./*.js components/*.jsx ./*.html"
   },
   "contributors": [
     "Anish George",
@@ -16,7 +16,8 @@
     "Giamir Buoncristiani",
     "Isadora Barros",
     "Paul Venhaus",
-    "Tuomas Nylund"
+    "Tuomas Nylund",
+    "John Syrinek"
   ],
   "license": "ISC",
   "engines": {
@@ -39,6 +40,8 @@
     }
   },
   "dependencies": {
-    "chart.js": "^3.2.1"
+    "chart.js": "^3.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }
