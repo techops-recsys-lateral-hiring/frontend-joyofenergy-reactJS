@@ -1,51 +1,34 @@
-import React from "react";
+import React from "react"
 
-export const Sidebar = ({ readings }) => (
+const DeviceSection = ({title, usage}) => (
+  <div className="shadow-2 roundedMore bg-super-light-grey mb1">
+    <p className="darkgray pl2 pt1 pb1">{title}</p>
+    <p className="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
+      {usage}
+    </p>
+  </div>
+)
+
+const SummarySection = ({summary, subtitle}) => (
   <>
-    <p className="h2 greyBlue">⚡️ 1.4kW</p>
-    <p className="darkgray mb2">Power draw</p>
-    <p className="h2 greyBlue">☀️️ 5.8kW</p>
-    <p className="darkgray mb2">Solar power production</p>
-    <p className="h2 greyBlue">🔌️ 4.4kW</p>
-    <p className="darkgray mb2">Fed into grid</p>
+    <p className="h2 greyBlue">{summary}</p>
+    <p className="darkgray mb2">{subtitle}</p>
+  </>
+)
+export const Sidebar = () => (
+  <>
+    <SummarySection summary='⚡️ 1.4kW' subtitle='Power draw'/>
+    <SummarySection summary='☀️️ 5.8kW' subtitle='Solar power production'/>
+    <SummarySection summary='🔌️ 4.4kW' subtitle='Fed into grid'/>
+
     <section className="h5 darkgray mb2">
       <h4 className="h4 mb1">Your devices:</h4>
-      <div className="shadow-2 roundedMore bg-super-light-grey mb1">
-        <p className="darkgray pl2 pt1 pb1">Air conditioner</p>
-        <p className="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-          0.3093kW
-        </p>
-      </div>
-      <div className="shadow-2 roundedMore bg-super-light-grey mb1">
-        <p className="darkgray pl2 pt1 pb1">Wi-Fi router</p>
-        <p className="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-          0.0033kW
-        </p>
-      </div>
-      <div className="shadow-2 roundedMore bg-super-light-grey mb1">
-        <p className="darkgray pl2 pt1 pb1">Humidifer</p>
-        <p className="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-          0.0518kW
-        </p>
-      </div>
-      <div className="shadow-2 roundedMore bg-super-light-grey mb1">
-        <p className="darkgray pl2 pt1 pb1">Smart TV</p>
-        <p className="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-          0.1276kW
-        </p>
-      </div>
-      <div className="shadow-2 roundedMore bg-super-light-grey mb1">
-        <p className="darkgray pl2 pt1 pb1">Diffuser</p>
-        <p className="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-          0.0078kW
-        </p>
-      </div>
-      <div className="shadow-2 roundedMore bg-super-light-grey mb1">
-        <p className="darkgray pl2 pt1 pb1">Refrigerator</p>
-        <p className="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-          0.0923kW
-        </p>
-      </div>
+      <DeviceSection title='Air conditioner' usage='0.3093kW'/>
+      <DeviceSection title='Wi-Fi router' usage='0.0033kW'/>
+      <DeviceSection title='Humidifer' usage='0.0518kW'/>
+      <DeviceSection title='Smart TV' usage='0.1276kW'/>
+      <DeviceSection title='Diffuser' usage='0.0078kW'/>
+      <DeviceSection title='Refrigerator' usage='0.0923kW'/>
     </section>
   </>
-);
+)
