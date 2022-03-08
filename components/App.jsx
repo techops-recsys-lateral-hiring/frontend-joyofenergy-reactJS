@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "./Sidebar.jsx";
-import EnergyConsumption from "./EnergyConsumption.jsx";
+import { Sidebar } from "./Sidebar.jsx";
+import { EnergyConsumption } from "./EnergyConsumption.jsx";
 import { getReadings } from "../reading";
 
-const App = () => {
+export const App = () => {
   const [readings, setReadings] = useState();
 
   useEffect(async () => {
@@ -26,5 +26,3 @@ const App = () => {
     </div>
   );
 };
-
-export { App };

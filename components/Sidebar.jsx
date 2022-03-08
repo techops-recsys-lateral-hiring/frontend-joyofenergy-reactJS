@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sidebar = ({ readings }) => (
+export const Sidebar = ({ readings }) => (
   <>
     <p className="h2 greyBlue">⚡️ 1.4kW</p>
     <p className="darkgray mb2">Power draw</p>
@@ -49,5 +49,3 @@ const Sidebar = ({ readings }) => (
     </section>
   </>
 );
-
-export default Sidebar;

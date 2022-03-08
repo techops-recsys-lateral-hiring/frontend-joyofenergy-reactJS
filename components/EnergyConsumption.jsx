@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import renderChart from "../chart.js";
 
-const EnergyConsumption = ({ readings }) => {
+export const EnergyConsumption = ({ readings }) => {
   useEffect(() => {
     renderChart(readings);
   }, []);
@@ -41,5 +41,3 @@ const EnergyConsumption = ({ readings }) => {
     </>
   );
 };
-
-export default EnergyConsumption;
