@@ -3,8 +3,6 @@ import Sidebar from "./Sidebar.jsx";
 import EnergyConsumption from "./EnergyConsumption.jsx";
 import { getReadings } from "../reading";
 
-jest.mock("../chart.js");
-
 const App = () => {
   const [readings, setReadings] = useState();
 
