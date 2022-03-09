@@ -1,8 +1,6 @@
 # Todos for Michael and John
 1. Maybe clean up reading.js - move reading methods into chart
-2. Remove jest?
 3. Update engines?
-4. Combine babel configs (file and package.json)
 
 # Introducing JOI Energy
 
