@@ -1,3 +1,8 @@
+# Todos for Michael and John
+1. Test typescript or pull it out of the readme
+2. Maybe clean up reading.js
+3. Ensure component tests are easily possible and one such test exists
+
 # Introducing JOI Energy
 
 JOI Energy is a new start-up in the energy industry. They provide their customers with smart meters that record their
