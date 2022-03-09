@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react"
-import { Sidebar } from "./Sidebar.jsx"
-import { EnergyConsumption } from "./EnergyConsumption.jsx"
-import { getReadings } from "../reading"
+import React, { useEffect, useState } from "react";
+import { Sidebar } from "./Sidebar.jsx";
+import { EnergyConsumption } from "./EnergyConsumption.jsx";
+import { getReadings } from "../reading";
 
 export const App = () => {
-  const [readings, setReadings] = useState()
+  const [readings, setReadings] = useState();
 
   useEffect(async () => {
-    const result = await getReadings()
-    setReadings(result)
-  }, [])
+    const result = await getReadings();
+    setReadings(result);
+  }, []);
 
   if (!readings) {
-    return null
+    return null;
   }
 
   return (
@@ -24,5 +24,5 @@ export const App = () => {
         <EnergyConsumption readings={readings} />
       </article>
     </div>
-  )
-}
+  );
+};

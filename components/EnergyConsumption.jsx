@@ -3,8 +3,8 @@ import renderChart from "../chart.js";
 
 export const EnergyConsumption = ({ readings }) => {
   useEffect(() => {
-    renderChart(readings)
-  }, [])
+    renderChart(readings);
+  }, []);
 
   return (
     <>
@@ -39,5 +39,5 @@ export const EnergyConsumption = ({ readings }) => {
         <canvas id="usageChart"></canvas>
       </section>
     </>
-  )
-}
+  );
+};

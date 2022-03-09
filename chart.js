@@ -1,30 +1,30 @@
-import * as chartJs from "chart.js"
-import { groupByDay, sortByTime } from "./reading"
+import * as chartJs from "chart.js";
+import { groupByDay, sortByTime } from "./reading";
 
-let chart
+let chart;
 
 export const formatDateLabel = (timestamp) => {
-  const date = new Date(timestamp)
-  const month = date.getMonth()
-  const day = date.getDate()
+  const date = new Date(timestamp);
+  const month = date.getMonth();
+  const day = date.getDate();
 
   const formatPart = (value) => {
-    return value < 10 ? `0${value}` : `${value}`
-  }
+    return value < 10 ? `0${value}` : `${value}`;
+  };
 
-  return `${formatPart(day)}/${formatPart(month + 1)}`
-}
+  return `${formatPart(day)}/${formatPart(month + 1)}`;
+};
 
 export const renderChart = (readings) => {
-  chartJs.Chart.defaults.font.size = "10px"
+  chartJs.Chart.defaults.font.size = "10px";
 
   chartJs.Chart.register.apply(
     null,
     Object.values(chartJs).filter((chartClass) => chartClass.id)
-  )
+  );
 
-  const labels = readings.map(({ time }) => formatDateLabel(time))
-  const values = readings.map(({ value }) => value)
+  const labels = readings.map(({ time }) => formatDateLabel(time));
+  const values = readings.map(({ value }) => value);
 
   const data = {
     labels: labels,
@@ -40,10 +40,10 @@ export const renderChart = (readings) => {
         borderRadius: 10,
       },
     ],
-  }
+  };
 
   if (chart) {
-    chart.destroy()
+    chart.destroy();
   }
 
   chart = new chartJs.Chart("usageChart", {
@@ -69,9 +69,9 @@ export const renderChart = (readings) => {
       },
       maintainAspectRatio: false,
     },
-  })
-}
+  });
+};
 
 export default (readings) => {
-  renderChart(sortByTime(groupByDay(readings)).slice(-30))
-}
+  renderChart(sortByTime(groupByDay(readings)).slice(-30));
+};

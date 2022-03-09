@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { App } from "./App.jsx";
 
-jest.mock('../chart.js')
+jest.mock("../chart.js");
 
 describe("App", () => {
   it("renders energy dashboard", async () => {
