@@ -1,7 +1,8 @@
 # Todos for Michael and John
-1. Test typescript or pull it out of the readme
-2. Maybe clean up reading.js
-3. Ensure component tests are easily possible and one such test exists
+1. Maybe clean up reading.js - move reading methods into chart
+2. Remove jest?
+3. Update engines?
+4. Combine babel configs (file and package.json)
 
 # Introducing JOI Energy
 
