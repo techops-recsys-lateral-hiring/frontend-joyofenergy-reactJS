@@ -1,6 +1,3 @@
-# Todos for Michael and John
-1. Maybe clean up reading.js - move reading methods into chart
-
 # Introducing JOI Energy
 
 JOI Energy is a new start-up in the energy industry. They provide their customers with smart meters that record their
