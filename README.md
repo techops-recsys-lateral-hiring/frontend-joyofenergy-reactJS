@@ -1,6 +1,5 @@
 # Todos for Michael and John
 1. Maybe clean up reading.js - move reading methods into chart
-3. Update engines?
 
 # Introducing JOI Energy
 
@@ -15,7 +14,7 @@ another ThoughtWorker to progress with the current user stories. This is your ch
 
 ## Requirements
 
-The project requires [Node v14.16.1](https://nodejs.org/en/download/) or higher.
+The project requires [Node v18](https://nodejs.org/en/download/) or higher.
 
 ### Styling
 
