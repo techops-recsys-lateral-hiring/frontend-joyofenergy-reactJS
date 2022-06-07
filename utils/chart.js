@@ -14,7 +14,7 @@ export const formatDateLabel = (timestamp) => {
   return `${formatPart(day)}/${formatPart(month + 1)}`;
 };
 
-export const renderChart = (readings) => {
+export const renderChart = (containerId, readings) => {
   chartJs.Chart.defaults.font.size = "10px";
 
   chartJs.Chart.register.apply(
@@ -45,7 +45,7 @@ export const renderChart = (readings) => {
     chart.destroy();
   }
 
-  chart = new chartJs.Chart("usageChart", {
+  chart = new chartJs.Chart(containerId, {
     type: "bar",
     data: data,
     options: {
@@ -69,33 +69,4 @@ export const renderChart = (readings) => {
       maintainAspectRatio: false,
     },
   });
-};
-
-export const groupByDay = (readings) => {
-  const groupedByDay = readings.reduce((curr, { time, value }) => {
-    const readingDate = new Date(time);
-    const day = new Date(
-      readingDate.getFullYear(),
-      readingDate.getMonth(),
-      readingDate.getDate()
-    ).getTime();
-    if (!curr[day]) curr[day] = 0;
-    curr[day] += value;
-    return curr;
-  }, {});
-
-  return Object.entries(groupedByDay).map(([day, value]) => ({
-    time: Number(day),
-    value,
-  }));
-};
-
-export const sortByTime = (readings) => {
-  return [...readings].sort(
-    (readingA, readingB) => readingA.time - readingB.time
-  );
-};
-
-export default (readings) => {
-  renderChart(sortByTime(groupByDay(readings)).slice(-30));
 };

@@ -1,20 +1,16 @@
 import React, { useEffect } from "react";
-import renderChart from "../chart.js";
+import { renderChart } from "../utils/chart.js";
+import { groupByDay, sortByTime } from "../utils/reading";
 
 export const EnergyConsumption = ({ readings }) => {
+  const containerId = "usageChart";
   useEffect(() => {
-    renderChart(readings);
+    renderChart(containerId, sortByTime(groupByDay(readings)).slice(-30));
   }, []);
 
   return (
     <>
-      <h1
-        role="heading"
-        aria-level={1}
-        className="regular darkgray line-height-1 mb3"
-      >
-        Energy consumption
-      </h1>
+      <h1 className="regular darkgray line-height-1 mb3">Energy consumption</h1>
       <section className="mb3">
         <button
           className="
@@ -36,7 +32,7 @@ export const EnergyConsumption = ({ readings }) => {
         </button>
       </section>
       <section className="chartHeight mb3">
-        <canvas id="usageChart"></canvas>
+        <canvas id={containerId} />
       </section>
     </>
   );
