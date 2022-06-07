@@ -9,7 +9,7 @@ const DeviceSection = ({ title, usage }) => (
 
 const SummarySection = ({ summary, subtitle }) => (
   <>
-    <p className="h2 greyBlue">{summary}</p>
+    <h2 className="h2 greyBlue">{summary}</h2>
     <p className="darkgray mb2">{subtitle}</p>
   </>
 );

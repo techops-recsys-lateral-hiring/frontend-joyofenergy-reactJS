@@ -1,13 +1,28 @@
-import { formatDateLabel, groupByDay, sortByTime } from "./chart";
+import { getReadings, groupByDay, sortByTime } from "./reading";
 
-describe("#chart formatDateLabel", () => {
-  it("should format date label", () => {
-    expect(formatDateLabel(new Date(2021, 0, 1).getTime())).toBe("01/01");
-    expect(formatDateLabel(new Date(2021, 1, 1).getTime())).toBe("01/02");
-    expect(formatDateLabel(new Date(2021, 5, 1).getTime())).toBe("01/06");
-    expect(formatDateLabel(new Date(2021, 11, 1).getTime())).toBe("01/12");
-    expect(formatDateLabel(new Date(2021, 11, 25).getTime())).toBe("25/12");
-    expect(formatDateLabel(new Date(2021, 11, 31).getTime())).toBe("31/12");
+describe("#reading", function () {
+  describe("#getReadings", () => {
+    it("should generate readings with specified length", async () => {
+      const length = 100;
+      expect(await getReadings(length)).toHaveLength(length);
+    });
+
+    it("should generate readings with timestamps and random values", async () => {
+      const reading = (await getReadings(1))[0];
+
+      expect(typeof reading.time).toBe("number");
+      expect(typeof reading.value).toBe("number");
+    });
+
+    it("should generate readings by hours and ordered by time descending", async () => {
+      const readings = await getReadings(4);
+
+      expect(readings).toHaveLength(4);
+      const OneHourInMilliseconds = 60 * 60 * 1000;
+      expect(readings[0].time - readings[1].time).toBe(OneHourInMilliseconds);
+      expect(readings[1].time - readings[2].time).toBe(OneHourInMilliseconds);
+      expect(readings[2].time - readings[3].time).toBe(OneHourInMilliseconds);
+    });
   });
 
   describe("#groupedByDay", () => {
@@ -120,4 +135,5 @@ describe("#chart formatDateLabel", () => {
       ]);
     });
   });
+
 });
