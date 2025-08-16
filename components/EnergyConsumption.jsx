@@ -1,9 +1,33 @@
 import React, { useEffect } from "react";
 import { renderChart } from "../utils/chart.js";
-import { groupByDay, sortByTime } from "../utils/reading";
+import { groupByDay, sortByTime, calculateCostOfConsumption, calculateLast30DaysConsumption, calculateFootprint } from "../utils/reading";
+import { EnergyCard } from "./EnergyCard.jsx";
 
 export const EnergyConsumption = ({ readings }) => {
   const containerId = "usageChart";
+
+  const energyCards = [
+    {
+      title: "Cost",
+      icon: <>💰</>,
+      value: `${calculateCostOfConsumption(readings)}`,
+      description: "$"
+    },
+    {
+      title: "Consumption",
+      icon: <>⚡</>,
+      value: `${calculateLast30DaysConsumption(readings)}`,
+      description: "kWh"
+    },
+
+    {
+      title: "Footprint",
+      icon: <>👟</>,
+      value: `${calculateFootprint(readings)}`,
+      description: "tonnes"
+    }
+  ];
+
   useEffect(() => {
     renderChart(containerId, sortByTime(groupByDay(readings)).slice(-30));
   }, []);
@@ -33,6 +57,17 @@ export const EnergyConsumption = ({ readings }) => {
       </section>
       <section className="chartHeight mb3">
         <canvas id={containerId} />
+      </section>
+      <section className="flex full-width pt1" style={{ gap: "2rem" }}>
+        {energyCards.map((card, index) => (
+          <EnergyCard
+            key={index}
+            title={card.title}
+            icon={card.icon}
+            value={card.value}
+            description={card.description}
+          />
+        ))}
       </section>
     </>
   );
