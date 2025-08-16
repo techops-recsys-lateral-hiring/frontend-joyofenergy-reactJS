@@ -1,4 +1,11 @@
-import { getReadings, groupByDay, sortByTime } from "./reading";
+import { 
+  getReadings, 
+  groupByDay, 
+  sortByTime,
+  calculateLast30DaysConsumption,
+  calculateCostOfConsumption,
+  calculateFootprint
+} from "./reading";
 
 describe("#reading", function () {
   describe("#getReadings", () => {
@@ -136,4 +143,68 @@ describe("#reading", function () {
     });
   });
 
+  describe("#calculateLast30DaysConsumption", () => {
+    it.each([null, undefined, "string", []])("should return 0 for invalid or empty array", (value) => {
+      expect(calculateLast30DaysConsumption(value)).toBe(0);
+    });
+
+    it("should calculate rounded consumption for single day", () => {
+      const readings = [
+        { time: new Date(2021, 12, 17, 10, 24).getTime(), value: 50.5 }
+      ];
+      
+      expect(calculateLast30DaysConsumption(readings)).toBe(51);
+    });
+
+    it("should sum and round consumption for multiple readings", () => {
+      const readings = [
+        { time: new Date(2021, 12, 17, 10, 24).getTime(), value: 50.3 },
+        { time: new Date(2021, 12, 16, 9, 24).getTime(), value: 30.7 },
+        { time: new Date(2021, 12, 15, 8, 24).getTime(), value: 20.1 }
+      ];
+      
+      expect(calculateLast30DaysConsumption(readings)).toBe(101);
+    });
+
+    it("should limit to last 30 days only", () => {
+      const readings = [];
+      for (let i = 0; i < 35; i++) {
+        readings.push({
+          time: new Date(2021, 12, i + 1).getTime(),
+          value: 1
+        });
+      }
+      
+      expect(calculateLast30DaysConsumption(readings)).toBe(30);
+    });
+  });
+
+  describe("#calculateCostOfConsumption", () => {
+    it.each([null, undefined, "string", []])("should return 0 for invalid or empty array", (value) => {
+      expect(calculateLast30DaysConsumption(value)).toBe(0);
+    });
+
+    it("should round cost to nearest integer", () => {
+      const readings = [
+        { time: new Date(2021, 12, 17).getTime(), value: 50.5 },
+        { time: new Date(2021, 12, 16).getTime(), value: 49.5 }
+      ];
+      
+      expect(calculateCostOfConsumption(readings)).toBe(14);
+    });
+  });
+
+  describe("#calculateFootprint", () => {
+    it.each([null, undefined, "string", []])("should return 0 for invalid or empty array", (value) => {
+      expect(calculateLast30DaysConsumption(value)).toBe(0);
+    });
+
+    it("should return footprint with accuracy of 4 decimal places", () => {
+      const readings = [
+        { time: new Date(2021, 12, 17).getTime(), value: 1234.5678 }
+      ];
+      
+      expect(calculateFootprint(readings)).toBe(0.3127);
+    });
+  });
 });
