@@ -31,3 +31,36 @@ export const sortByTime = (readings) => {
     (readingA, readingB) => readingA.time - readingB.time
   );
 };
+
+export const calculateLast30DaysConsumption = (readings) => {
+	if (!Array.isArray(readings)) return 0;
+
+	const getConsumption = sortByTime(groupByDay(readings)).slice(-30);
+	const totalConsumption = getConsumption.reduce((total, reading) => total + reading.value, 0);
+
+	return Math.round(totalConsumption);
+};
+
+export const calculateCostOfConsumption = (readings) => {
+	if (!Array.isArray(readings)) return 0;
+	
+	const electricityPrice = 0.138;
+	const totalConsumption = calculateLast30DaysConsumption(readings);
+	
+	if (isNaN(totalConsumption)) return 0;
+	
+	const cost = totalConsumption * electricityPrice;
+	return Math.round(cost);
+};
+
+export const calculateFootprint = (readings) => {
+	if (!Array.isArray(readings)) return 0;
+
+	const footprint = 0.0002532;
+	const totalConsumption = calculateLast30DaysConsumption(readings);
+	
+	if (isNaN(totalConsumption)) return 0;
+	
+	const footprintValue = totalConsumption * footprint;
+	return Number(footprintValue.toFixed(4));
+}
